@@ -9,14 +9,14 @@ api = Api(app)
 todos = {}
 
 class TodoSimple(Resource):
-    def get(self, todo_id):
-        return {todo_id: todos[todo_id]}
+    def get(self, id):
+        return {id: todos[id]}
 
-    def put(self, todo_id):
-        todos[todo_id] = request.form['data']
-        return {todo_id: todos[todo_id]}
+    def put(self, id):
+        todos[id] = request.form['data']
+        return {id: todos[id]}
 
-api.add_resource(TodoSimple, '/<string:todo_id>')
+api.add_resource(TodoSimple, '/<string:id>')
 
 if __name__ == '__main__':
     app.run(debug=True)
