@@ -10,11 +10,17 @@ todos = {}
 
 class TodoSimple(Resource):
     def get(self, id):
-        return {id: todos[id]}
+        return {
+            'id': id,
+            'name':todos[id]
+            }
 
     def put(self, id):
         todos[id] = request.form['data']
-        return {id: todos[id]}
+        return {
+            'id': id,
+            'name':todos[id]
+            }
 
 api.add_resource(TodoSimple, '/<string:id>')
 
